@@ -16,9 +16,43 @@
         console.log(newArr);
       }
       test(a);
+
+      var b = ["ab", "cd", "ab", "cd", "ef", "cd"];
+      // 获取数组中的每一个元素的个数，并以对象的形式输出
+      var contedNames = b.reduce((allNames, name) => {
+        if (name in allNames) {
+          allNames[name]++;
+        } else {
+          allNames[name] = 1;
+        }
+        return allNames;
+      }, {});
+
+      testValue = contedNames => {
+        var arr = [];
+
+        for (let i in contedNames) {
+          let temp = { name: i, value: contedNames[i] };
+          arr.push(temp); //属性
+        }
+        // 用对象的某一项对其进行排序
+        compare = p => {
+          //这是比较函数
+          return function(m, n) {
+            var a = m[p];
+            var b = n[p];
+            return b - a; //升序
+          };
+        };
+        arr.sort(compare("value"));
+        console.log(arr);
+      };
+      var arr1 = [];
+
+      testValue(contedNames);
     </script>
     <h1>
-      1133This is a static template, there33 is no bundler or bundling involved!
+      test
     </h1>
   </body>
 </html>
